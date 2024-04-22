@@ -3,6 +3,8 @@ using System;
 
 public partial class Health : Node2D
 {
+	[Signal] public delegate void HealthDepletedEventHandler();
+
 	[Export] float maxHealth = 100f;
 	float health;
 
@@ -17,7 +19,7 @@ public partial class Health : Node2D
 
 		if (health <= 0)
 		{
-			GetParent().QueueFree();
+			EmitSignal(SignalName.HealthDepleted);
 		}
 	}
 

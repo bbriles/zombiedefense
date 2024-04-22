@@ -28,3 +28,5 @@ texture = ExtResource("1_se0ue")
 position = Vector2(38, 10)
 script = ExtResource("3_a03qw")
 bulletScene = ExtResource("4_xyhul")
+
+[connection signal="tree_exited" from="." to="." method="OnDeath"]

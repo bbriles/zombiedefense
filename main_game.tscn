@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxswpamqpjdn0"]
+[gd_scene load_steps=9 format=3 uid="uid://bxswpamqpjdn0"]
 
 [ext_resource type="PackedScene" uid="uid://dvs7fkt4nbu8v" path="res://Entities/player.tscn" id="1_hq724"]
+[ext_resource type="Script" path="res://Scripts/Level.cs" id="1_yrw7k"]
+[ext_resource type="PackedScene" uid="uid://bjobgketv6ipi" path="res://Entities/player2.tscn" id="2_i833h"]
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_nh3jn"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="3_0m5c1"]
 [ext_resource type="PackedScene" uid="uid://bwbm375ml3qs7" path="res://Entities/zombie.tscn" id="3_3wbyd"]
@@ -1687,10 +1689,14 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_pvweo")
 
-[node name="MainGame" type="Node2D"]
+[node name="Level" type="Node2D"]
+script = ExtResource("1_yrw7k")
 
 [node name="Player" parent="." instance=ExtResource("1_hq724")]
-position = Vector2(573, 320)
+position = Vector2(384, 448)
+
+[node name="Player2" parent="." instance=ExtResource("2_i833h")]
+position = Vector2(736, 288)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_tsvws")

@@ -1,12 +1,16 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 public partial class Zombie : CharacterBody2D
 {
-    Player player;
+    Level level;
+    Health health;
+    Player currentTarget;
 
-    [Export] float speed = 200f;
+    [Export] float speed = 100f;
     [Export] float damage = 10f;
     [Export] float attacksPerSecond = 2;
 
@@ -18,18 +22,42 @@ public partial class Zombie : CharacterBody2D
     {
         attackSpeed = 1 / attacksPerSecond;
 
-        // TODO: Handle multiple players
-        player = (Player)GetTree().GetFirstNodeInGroup("player");
+        level = GetTree().Root.GetNode<Level>("Level");
+        health = GetChild<Health>(0);
+
+        health.HealthDepleted += OnDeath;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (player != null)
+        if (level != null)
         {
-            LookAt(player.Position);
+            float minDistance = float.MaxValue;
+            Player nearestPlayer = null;
+            // find nearest player
+            foreach (Player player in level.Players)
+            {
+                if (IsInstanceValid(player))
+                {
+                    var distance = GlobalPosition.DistanceSquaredTo(player.GlobalPosition);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        nearestPlayer = player;
+                    }
+                }
+            }
+            if(nearestPlayer != null)
+            {
+                LookAt(nearestPlayer.Position);
 
-            var direction = (player.GlobalPosition - GlobalPosition).Normalized();
-            Velocity = direction * speed;
+                var direction = (nearestPlayer.GlobalPosition - GlobalPosition).Normalized();
+                Velocity = direction * speed;
+            }
+            else
+            {
+                Velocity = Vector2.Zero;
+            }
         }
         else
         {
@@ -54,13 +82,16 @@ public partial class Zombie : CharacterBody2D
 
     public void Attack()
     {
-        player.GetNode<Health>("Health").Damage(damage);
+        if(currentTarget != null) {
+            currentTarget.GetNode<Health>("Health").Damage(damage);
+        }
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)
     {
         if (body.IsInGroup("player"))
         {
+            currentTarget = (Player)body;
             Debug.Print("Player in range");
             withinAttackRange = true;
         }
@@ -70,9 +101,16 @@ public partial class Zombie : CharacterBody2D
     {
         if (body.IsInGroup("player"))
         {
+            currentTarget = null;
             Debug.Print("Player out of range");
             withinAttackRange = false;
             timeToAttack = attackSpeed;
         }
+    }
+
+    public void OnDeath()
+    {
+        Debug.Print("Zombie Killed");
+        QueueFree();
     }
 }

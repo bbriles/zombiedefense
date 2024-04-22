@@ -3,6 +3,7 @@ using System;
 
 public partial class Gun : Node2D
 {
+	[Export] int playerNumber = 1;
 	[Export] PackedScene bulletScene;
 	[Export] float bulletSpeed = 600f;
 	[Export] float bulletsPerSecond = 5f;
@@ -20,7 +21,14 @@ public partial class Gun : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("p1_shoot") && timeToFire > fireRate)
+		bool shootPressed = false;
+
+		if ((playerNumber == 1 && Input.IsActionJustPressed("p1_shoot")) || (playerNumber == 2 && Input.IsActionJustPressed("p2_shoot")))
+		{
+			shootPressed = true;
+		}
+
+		if (shootPressed && timeToFire > fireRate)
 		{
 			var bullet = bulletScene.Instantiate<RigidBody2D>();
 
