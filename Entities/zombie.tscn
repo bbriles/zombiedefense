@@ -25,3 +25,6 @@ texture = ExtResource("1_jnla8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 position = Vector2(13.75, 0)
 shape = SubResource("RectangleShape2D_51gy0")
+
+[connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeBodyEnter"]
+[connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeBodyExit"]
