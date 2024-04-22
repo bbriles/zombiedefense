@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwbm375ml3qs7"]
+
+[ext_resource type="Script" path="res://Scripts/Zombie.cs" id="1_h8se0"]
+[ext_resource type="Texture2D" uid="uid://ct3ma32b4tts" path="res://Sprites/zombie1_hold.png" id="1_jnla8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hnnli"]
+radius = 12.0
+height = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51gy0"]
+size = Vector2(20.5, 41)
+
+[node name="Zombie" type="CharacterBody2D"]
+script = ExtResource("1_h8se0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hnnli")
+
+[node name="Graphics" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("1_jnla8")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(13.75, 0)
+shape = SubResource("RectangleShape2D_51gy0")

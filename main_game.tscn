@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxswpamqpjdn0"]
+[gd_scene load_steps=6 format=3 uid="uid://bxswpamqpjdn0"]
 
 [ext_resource type="PackedScene" uid="uid://dvs7fkt4nbu8v" path="res://Entities/player.tscn" id="1_hq724"]
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_nh3jn"]
+[ext_resource type="PackedScene" uid="uid://bwbm375ml3qs7" path="res://Entities/zombie.tscn" id="3_3wbyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvweo"]
 texture = ExtResource("2_nh3jn")
@@ -1705,3 +1706,6 @@ layer_2/tile_data = PackedInt32Array()
 layer_3/name = "top"
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(131076, 589825, 4, 131085, 655361, 4, 524301, 655361, 5, 524292, 589825, 5, 524293, 720897, 4, 524294, 720897, 4, 524295, 917505, 4, 524300, 720897, 4, 524299, 720897, 4, 524298, 720897, 4, 524297, 983041, 5, 131082, 917505, 4, 131081, 720897, 4, 131080, 720897, 4, 131079, 720897, 4, 131078, 720897, 4, 131077, 720897, 4, 131084, 983041, 5, 327684, 917505, 5, 458765, 720897, 5, 196621, 720897, 5, 196612, 983041, 4, 327693, 720897, 5, 262157, 720897, 5, 458756, 720897, 5, 393220, 720897, 5, 393229, 720897, 5, 524304, 1179649, 6, 65551, 1179649, 6, 65537, 1310721, 6, 524289, 1310721, 6)
+
+[node name="Zombie" parent="." instance=ExtResource("3_3wbyd")]
+position = Vector2(493, 79)

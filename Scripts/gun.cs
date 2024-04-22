@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class gun : Node2D
+public partial class Gun : Node2D
 {
 	[Export] PackedScene bulletScene;
 	[Export] float bulletSpeed = 600f;
