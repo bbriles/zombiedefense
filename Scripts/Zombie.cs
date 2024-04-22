@@ -54,7 +54,7 @@ public partial class Zombie : CharacterBody2D
 
     public void Attack()
     {
-        Debug.Print("Attack Player");
+        player.GetNode<Health>("Health").Damage(damage);
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvs7fkt4nbu8v"]
+[gd_scene load_steps=7 format=3 uid="uid://dvs7fkt4nbu8v"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_g60dw"]
 [ext_resource type="Texture2D" uid="uid://b4bx5rvdkdxgr" path="res://Sprites/survivor1_gun.png" id="1_se0ue"]
+[ext_resource type="Script" path="res://Scripts/Health.cs" id="2_xt3he"]
 [ext_resource type="Script" path="res://Scripts/Gun.cs" id="3_a03qw"]
 [ext_resource type="PackedScene" uid="uid://006dl8x2ouu6" path="res://Entities/bullet.tscn" id="4_xyhul"]
 
@@ -12,6 +13,9 @@ height = 40.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_g60dw")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_xt3he")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tn05y")
