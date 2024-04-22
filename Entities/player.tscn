@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvs7fkt4nbu8v"]
+[gd_scene load_steps=6 format=3 uid="uid://dvs7fkt4nbu8v"]
 
 [ext_resource type="Script" path="res://Scripts/player.cs" id="1_8yi1c"]
 [ext_resource type="Texture2D" uid="uid://b4bx5rvdkdxgr" path="res://Sprites/survivor1_gun.png" id="1_se0ue"]
+[ext_resource type="Script" path="res://Scripts/gun.cs" id="3_evroy"]
+[ext_resource type="PackedScene" uid="uid://006dl8x2ouu6" path="res://Entities/bullet.tscn" id="4_xyhul"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tn05y"]
 radius = 15.0
@@ -11,9 +13,14 @@ height = 40.0
 motion_mode = 1
 script = ExtResource("1_8yi1c")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tn05y")
+
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
 texture = ExtResource("1_se0ue")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_tn05y")
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(38, 10)
+script = ExtResource("3_evroy")
+bulletScene = ExtResource("4_xyhul")
