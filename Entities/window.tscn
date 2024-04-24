@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://5hps4xcfsnir"]
+
+[ext_resource type="Script" path="res://Scripts/Window.cs" id="1_00ulx"]
+[ext_resource type="Script" path="res://Scripts/Health.cs" id="1_fbtdb"]
+[ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_qpftt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q1ts"]
+size = Vector2(64, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmncp"]
+atlas = ExtResource("2_qpftt")
+region = Rect2(192, 1152, 64, 64)
+
+[node name="Window" type="StaticBody2D" groups=["destructable"]]
+script = ExtResource("1_00ulx")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("1_fbtdb")
+maxHealth = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7q1ts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_kmncp")
