@@ -9,6 +9,7 @@ public partial class Zombie : CharacterBody2D
     Level level;
     Health health;
     Player currentTarget;
+    NavigationAgent2D navigationAgent2D;
 
     [Export] float speed = 100f;
     [Export] float damage = 10f;
@@ -17,13 +18,15 @@ public partial class Zombie : CharacterBody2D
     float attackSpeed;
     float timeToAttack = 0f;
     bool withinAttackRange = false;
+    
 
     public override void _Ready()
     {
         attackSpeed = 1 / attacksPerSecond;
 
         level = GetTree().Root.GetNode<Level>("Level");
-        health = GetChild<Health>(0);
+        navigationAgent2D = GetNode<NavigationAgent2D>("NavigationAgent2D");
+        health = GetNode<Health>("Health");
 
         health.HealthDepleted += OnDeath;
     }
@@ -49,9 +52,14 @@ public partial class Zombie : CharacterBody2D
             }
             if(nearestPlayer != null)
             {
-                LookAt(nearestPlayer.Position);
+                /*LookAt(nearestPlayer.Position);
 
                 var direction = (nearestPlayer.GlobalPosition - GlobalPosition).Normalized();
+                Velocity = direction * speed;*/
+
+                navigationAgent2D.TargetPosition = nearestPlayer.GlobalPosition;
+                LookAt(navigationAgent2D.GetNextPathPosition());
+                var direction = (navigationAgent2D.GetNextPathPosition() - GlobalPosition).Normalized();
                 Velocity = direction * speed;
             }
             else

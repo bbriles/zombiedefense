@@ -12,6 +12,8 @@ height = 44.0
 size = Vector2(20.5, 43)
 
 [node name="Zombie" type="CharacterBody2D" groups=["enemy"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_h8se0")
 
 [node name="Health" type="Node2D" parent="."]
@@ -30,6 +32,8 @@ texture = ExtResource("1_jnla8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 position = Vector2(13.75, 0.5)
 shape = SubResource("RectangleShape2D_51gy0")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeBodyEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeBodyExit"]
