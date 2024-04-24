@@ -15,6 +15,9 @@ public partial class Player : CharacterBody2D
 		health = GetChild<Health>(0);
 
 		health.HealthDepleted += OnDeath;
+
+		// Setup signal events
+		TreeExited += OnDeath;
     }
 
     public void GetInput()

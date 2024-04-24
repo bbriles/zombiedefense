@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxswpamqpjdn0"]
+[gd_scene load_steps=10 format=3 uid="uid://bxswpamqpjdn0"]
 
 [ext_resource type="PackedScene" uid="uid://dvs7fkt4nbu8v" path="res://Entities/player.tscn" id="1_hq724"]
 [ext_resource type="Script" path="res://Scripts/Level.cs" id="1_yrw7k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_nh3jn"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="3_0m5c1"]
 [ext_resource type="PackedScene" uid="uid://bwbm375ml3qs7" path="res://Entities/zombie.tscn" id="3_3wbyd"]
+[ext_resource type="Script" path="res://Scripts/PlayerSpawner.cs" id="5_i72pi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvweo"]
 texture = ExtResource("2_nh3jn")
@@ -1692,16 +1693,7 @@ sources/1 = SubResource("TileSetAtlasSource_pvweo")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yrw7k")
 
-[node name="Player" parent="." instance=ExtResource("1_hq724")]
-visible = false
-position = Vector2(384, 448)
-
-[node name="Player2" parent="." instance=ExtResource("2_i833h")]
-visible = false
-position = Vector2(736, 288)
-
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 tile_set = SubResource("TileSet_tsvws")
 format = 2
 layer_0/name = "floor"
@@ -1717,8 +1709,19 @@ layer_3/name = "top"
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(131076, 589825, 4, 131085, 655361, 4, 524301, 655361, 5, 524292, 589825, 5, 524293, 720897, 4, 524294, 720897, 4, 524295, 917505, 4, 524300, 720897, 4, 524299, 720897, 4, 524298, 720897, 4, 524297, 983041, 5, 131082, 917505, 4, 131081, 720897, 4, 131080, 720897, 4, 131079, 720897, 4, 131078, 720897, 4, 131077, 720897, 4, 131084, 983041, 5, 327684, 917505, 5, 458765, 720897, 5, 196621, 720897, 5, 196612, 983041, 4, 327693, 720897, 5, 262157, 720897, 5, 458756, 720897, 5, 393220, 720897, 5, 393229, 720897, 5, 524304, 1179649, 6, 65551, 1179649, 6, 65537, 1310721, 6, 524289, 1310721, 6)
 
+[node name="PlayerSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPoints")]
+script = ExtResource("5_i72pi")
+player1Scene = ExtResource("1_hq724")
+player2Scene = ExtResource("2_i833h")
+spawnPoints = [NodePath("PlayerSpawn1"), NodePath("PlayerSpawn2")]
+
+[node name="PlayerSpawn1" type="Node2D" parent="PlayerSpawner"]
+position = Vector2(768, 256)
+
+[node name="PlayerSpawn2" type="Node2D" parent="PlayerSpawner"]
+position = Vector2(384, 448)
+
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPoints")]
-visible = false
 script = ExtResource("3_0m5c1")
 enemyScene = ExtResource("3_3wbyd")
 spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4")]
@@ -1738,7 +1741,7 @@ position = Vector2(96, 544)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Health_p1" type="ColorRect" parent="UI"]
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
@@ -1746,7 +1749,7 @@ offset_top = -40.0
 offset_right = 220.0
 offset_bottom = -20.0
 grow_vertical = 0
-color = Color(0.333333, 0.333333, 0.333333, 1)
+color = Color(0.162066, 0.162066, 0.162066, 0.901961)
 
 [node name="Value_p1" type="ColorRect" parent="UI/Health_p1"]
 layout_mode = 1
@@ -1775,7 +1778,7 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-color = Color(0.333333, 0.333333, 0.333333, 1)
+color = Color(0.160784, 0.160784, 0.160784, 0.901961)
 
 [node name="Value_p2" type="ColorRect" parent="UI/Health_p2"]
 layout_mode = 1

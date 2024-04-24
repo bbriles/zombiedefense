@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvg2t7wub223c"]
+
+[ext_resource type="Texture2D" uid="uid://cxi32o73np1li" path="res://Sprites/Zombie Defense Logo.png" id="1_4uiiw"]
+[ext_resource type="Script" path="res://Scripts/Menu.cs" id="1_di2c5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_di2c5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -32.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="1-Player" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "1 Player"
+
+[node name="2-Player" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "2 Players"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(608, 288)
+texture = ExtResource("1_4uiiw")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/1-Player" to="." method="OnOnePlayerPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/2-Player" to="." method="OnTwoPlayerPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]

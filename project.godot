@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ZombieDefense"
-run/main_scene="res://main_game.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameProperties="*res://Scripts/GameProperties.cs"
 
 [display]
 

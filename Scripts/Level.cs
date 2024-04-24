@@ -6,11 +6,11 @@ using System.Diagnostics;
 public partial class Level : Node
 {
 	[Signal] public delegate void GameOverEventHandler();
-	public Array<Player> Players { get; set; }
+	public Array<Player> Players = new Array<Player>();
 
 	public override void _Ready()
 	{
-		UpdatePlayerList();
+		//UpdatePlayerList();
 	}
 
 	public void UpdatePlayerList()
@@ -27,6 +27,12 @@ public partial class Level : Node
 			
 		}
 		Debug.Print("Updated Player List. # of Players: " + Players.Count);
+	}
+
+	public void AddPlayer(Player player)
+	{
+		Players.Add(player);
+		Debug.Print("Player Added");
 	}
 
 	public void RemovePlayer(Player player)

@@ -30,7 +30,7 @@ public partial class Zombie : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (level != null)
+        if (level != null && level.Players != null)
         {
             float minDistance = float.MaxValue;
             Player nearestPlayer = null;
