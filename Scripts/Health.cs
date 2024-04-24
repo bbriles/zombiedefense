@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Health : Node2D
 {
@@ -15,6 +16,7 @@ public partial class Health : Node2D
 
 	public void Damage(float damage)
 	{
+		Debug.Print("Taking Damage");
 		health -= damage;
 
 		if (health <= 0)

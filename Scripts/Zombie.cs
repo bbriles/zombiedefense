@@ -8,7 +8,7 @@ public partial class Zombie : CharacterBody2D
 {
     Level level;
     Health health;
-    Player currentTarget;
+    Node2D currentTarget;
     NavigationAgent2D navigationAgent2D;
 
     [Export] float speed = 100f;
@@ -91,26 +91,27 @@ public partial class Zombie : CharacterBody2D
     public void Attack()
     {
         if(currentTarget != null) {
+            Debug.Print("Zombie Attacking");
             currentTarget.GetNode<Health>("Health").Damage(damage);
         }
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)
     {
-        if (body.IsInGroup("player"))
+        if (body.IsInGroup("player") || body.IsInGroup("destructable"))
         {
-            currentTarget = (Player)body;
-            Debug.Print("Player in range");
+            currentTarget = body;
+            Debug.Print("Target in range");
             withinAttackRange = true;
         }
     }
 
     public void OnAttackRangeBodyExit(Node2D body)
     {
-        if (body.IsInGroup("player"))
+        if (body.IsInGroup("player") || body.IsInGroup("destructable"))
         {
             currentTarget = null;
-            Debug.Print("Player out of range");
+            Debug.Print("Target out of range");
             withinAttackRange = false;
             timeToAttack = attackSpeed;
         }

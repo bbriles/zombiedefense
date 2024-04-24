@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Level.cs" id="1_yrw7k"]
 [ext_resource type="PackedScene" uid="uid://bjobgketv6ipi" path="res://Entities/player2.tscn" id="2_i833h"]
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_nh3jn"]
-[ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="3_0m5c1"]
 [ext_resource type="PackedScene" uid="uid://bwbm375ml3qs7" path="res://Entities/zombie.tscn" id="3_3wbyd"]
 [ext_resource type="Script" path="res://Scripts/PlayerSpawner.cs" id="5_i72pi"]
+[ext_resource type="PackedScene" uid="uid://cbd7hy5muvwrv" path="res://Entities/door.tscn" id="8_mimo1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ucyqs"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -2354,7 +2354,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_tsvws"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-navigation_layer_0/layers = 3
+navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_pvweo")
 
 [node name="Level" type="Node2D"]
@@ -2388,22 +2388,15 @@ position = Vector2(768, 256)
 [node name="PlayerSpawn2" type="Node2D" parent="PlayerSpawner"]
 position = Vector2(384, 448)
 
-[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPoints")]
-script = ExtResource("3_0m5c1")
-enemyScene = ExtResource("3_3wbyd")
-spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4")]
+[node name="Door" parent="." instance=ExtResource("8_mimo1")]
+position = Vector2(736, 160)
 
-[node name="SpawnPoint" type="Node2D" parent="EnemySpawner"]
-position = Vector2(96, 96)
+[node name="Door2" parent="." instance=ExtResource("8_mimo1")]
+position = Vector2(288, 288)
+rotation = 1.5708
 
-[node name="SpawnPoint2" type="Node2D" parent="EnemySpawner"]
-position = Vector2(992, 96)
-
-[node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1056, 544)
-
-[node name="SpawnPoint4" type="Node2D" parent="EnemySpawner"]
-position = Vector2(96, 544)
+[node name="Door3" parent="." instance=ExtResource("8_mimo1")]
+position = Vector2(544, 544)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -2461,3 +2454,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.215686, 0.486275, 0.619608, 1)
+
+[node name="Zombie" parent="." instance=ExtResource("3_3wbyd")]
+position = Vector2(96, 288)
+
+[node name="Zombie2" parent="." instance=ExtResource("3_3wbyd")]
+position = Vector2(1088, 64)
+
+[node name="Zombie3" parent="." instance=ExtResource("3_3wbyd")]
+position = Vector2(576, 608)
