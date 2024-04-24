@@ -15,6 +15,7 @@ size = Vector2(20.5, 43)
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_h8se0")
+speed = 60.0
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_yo7i3")

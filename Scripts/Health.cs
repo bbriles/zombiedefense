@@ -5,6 +5,7 @@ using System.Diagnostics;
 public partial class Health : Node2D
 {
 	[Signal] public delegate void HealthDepletedEventHandler();
+	[Signal] public delegate void DamagedEventHandler();
 
 	[Export] float maxHealth = 100f;
 	float health;
@@ -18,6 +19,7 @@ public partial class Health : Node2D
 	{
 		Debug.Print("Taking Damage");
 		health -= damage;
+		EmitSignal(SignalName.Damaged);
 
 		if (health <= 0)
 		{

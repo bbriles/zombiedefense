@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbd7hy5muvwrv"]
+[gd_scene load_steps=7 format=3 uid="uid://cbd7hy5muvwrv"]
 
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="1_6hdq6"]
+[ext_resource type="Script" path="res://Scripts/Destructable.cs" id="1_8878s"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="1_idb7p"]
-[ext_resource type="Script" path="res://Scripts/Door.cs" id="1_j3v5n"]
+[ext_resource type="AudioStream" uid="uid://tf60asf8yr6h" path="res://Audio/impactPlank_medium_000.ogg" id="4_a6g20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xebf5"]
 size = Vector2(64, 28)
@@ -12,7 +13,7 @@ atlas = ExtResource("1_6hdq6")
 region = Rect2(576, 1088, 64, 64)
 
 [node name="Door" type="StaticBody2D" groups=["destructable"]]
-script = ExtResource("1_j3v5n")
+script = ExtResource("1_8878s")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_idb7p")
@@ -23,3 +24,6 @@ shape = SubResource("RectangleShape2D_xebf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_4vvhg")
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a6g20")
