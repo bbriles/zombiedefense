@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvs7fkt4nbu8v"]
+[gd_scene load_steps=9 format=3 uid="uid://dvs7fkt4nbu8v"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_g60dw"]
 [ext_resource type="Texture2D" uid="uid://b4bx5rvdkdxgr" path="res://Sprites/survivor1_gun.png" id="1_se0ue"]
@@ -10,6 +10,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tn05y"]
 radius = 15.0
 height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0ljj"]
+size = Vector2(24, 40)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -34,4 +37,12 @@ bulletScene = ExtResource("4_xyhul")
 stream = ExtResource("6_n0jr4")
 volume_db = -10.0
 
+[node name="ActivateArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
+position = Vector2(21, 0)
+shape = SubResource("RectangleShape2D_b0ljj")
+
 [connection signal="tree_exited" from="." to="." method="OnDeath"]
+[connection signal="body_entered" from="ActivateArea" to="." method="OnActivateBodyRangeEntered"]
+[connection signal="body_exited" from="ActivateArea" to="." method="OnActivateBodyRangeExit"]

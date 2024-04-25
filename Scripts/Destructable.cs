@@ -7,12 +7,10 @@ public partial class Destructable : Node2D
 	[Export] string destroyedSoundPath;
 
 	Health health;
-	AudioStreamPlayer damageSound;
 
     public override void _Ready()
     {
         health = GetNode<Health>("Health");
-		damageSound = GetNode<AudioStreamPlayer>("DamageSound");
 
 		health.Damaged += OnDamaged;
         health.HealthDepleted += OnDestruction;

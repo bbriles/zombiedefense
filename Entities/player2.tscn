@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjobgketv6ipi"]
+[gd_scene load_steps=9 format=3 uid="uid://bjobgketv6ipi"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_ll0f0"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="2_fsv3j"]
@@ -10,6 +10,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tn05y"]
 radius = 15.0
 height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2wno"]
+size = Vector2(24, 40)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -35,3 +38,9 @@ bulletScene = ExtResource("5_w55vf")
 [node name="GunShotSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_rbc28")
 volume_db = -10.0
+
+[node name="ActivateArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
+position = Vector2(21, 0)
+shape = SubResource("RectangleShape2D_f2wno")

@@ -9,6 +9,9 @@ public partial class Player : CharacterBody2D
 	[Export] int playerNumber = 1;
 	[Export] public int Speed = 300;
 
+	Activatable activateTarget = null;
+	bool withinActivateRange = false;
+
     public override void _Ready()
     {
         level = GetTree().Root.GetNode<Level>("Level");
@@ -37,6 +40,12 @@ public partial class Player : CharacterBody2D
 		{
 			Rotation = Velocity.Angle();
 		}
+
+		// Check for activation
+		if ((playerNumber == 1 && Input.IsActionJustPressed("p1_activate")) || (playerNumber == 2 && Input.IsActionJustPressed("p2_activate")))
+		{
+			Activate();
+		}
 	}
 
 	
@@ -51,5 +60,34 @@ public partial class Player : CharacterBody2D
 		Debug.Print("Player " + playerNumber + " Has Died");
 		level.RemovePlayer(this);
 		QueueFree();
+	}
+
+	public void OnActivateBodyRangeEntered(Node2D body)
+	{
+		if (body.IsInGroup("activatable"))
+        {
+            activateTarget = (Activatable)body;
+            Debug.Print("Activate Target in range");
+            withinActivateRange = true;
+        }
+	}
+
+	public void OnActivateBodyRangeExit(Node2D body)
+	{
+		if (body.IsInGroup("activatable"))
+        {
+            activateTarget = null;
+            Debug.Print("Activate Target out of range");
+            withinActivateRange = false;
+        }
+	}
+
+	public void Activate()
+	{
+		if (activateTarget != null)
+		{
+			Debug.Print("Activating!");
+			activateTarget.Activate(this);
+		}
 	}
 }
