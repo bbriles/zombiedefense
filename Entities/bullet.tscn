@@ -13,6 +13,7 @@ lock_rotation = true
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_xwj6b")
+damage = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

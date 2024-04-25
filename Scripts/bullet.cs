@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Bullet : RigidBody2D
 {
@@ -14,8 +15,9 @@ public partial class Bullet : RigidBody2D
 
 	public void OnBodyEntered(Node2D body)
 	{
-		if (body.IsInGroup("enemy"))
+		if (body.IsInGroup("enemy") || body.IsInGroup("destructable"))
 		{
+			Debug.Print("Bullet Hurt Something");
 			body.GetNode<Health>("Health").Damage(damage);
 		}
 

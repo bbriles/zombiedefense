@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbd7hy5muvwrv"]
+[gd_scene load_steps=6 format=3 uid="uid://cbd7hy5muvwrv"]
 
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="1_6hdq6"]
 [ext_resource type="Script" path="res://Scripts/Destructable.cs" id="1_8878s"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="1_idb7p"]
-[ext_resource type="AudioStream" uid="uid://tf60asf8yr6h" path="res://Audio/impactPlank_medium_000.ogg" id="4_a6g20"]
-[ext_resource type="AudioStream" uid="uid://dg25nejndojv4" path="res://Audio/wood-smash-1-170410.ogg" id="5_e5ypp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xebf5"]
 size = Vector2(64, 28)
@@ -15,19 +13,15 @@ region = Rect2(576, 1088, 64, 64)
 
 [node name="Door" type="StaticBody2D" groups=["destructable"]]
 script = ExtResource("1_8878s")
+damageSoundPath = "res://Audio/impactPlank_medium_000.ogg"
+destroyedSoundPath = "res://Audio/wood-smash-1-170410.ogg"
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_idb7p")
-maxHealth = 50.0
+maxHealth = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xebf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_4vvhg")
-
-[node name="DamageSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_a6g20")
-
-[node name="DestroyedSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_e5ypp")

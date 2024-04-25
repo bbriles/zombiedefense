@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://5hps4xcfsnir"]
+[gd_scene load_steps=6 format=3 uid="uid://5hps4xcfsnir"]
 
 [ext_resource type="Script" path="res://Scripts/Destructable.cs" id="1_213gg"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="1_fbtdb"]
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_qpftt"]
-[ext_resource type="AudioStream" uid="uid://kbjputhm8oun" path="res://Audio/impactGlass_heavy_000.ogg" id="4_21ifk"]
-[ext_resource type="AudioStream" uid="uid://bm43m3gssemgr" path="res://Audio/impact_glass_window_smash_break.ogg" id="5_tfckt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7q1ts"]
 size = Vector2(64, 18)
@@ -15,10 +13,12 @@ region = Rect2(192, 1152, 64, 64)
 
 [node name="Window" type="StaticBody2D" groups=["destructable"]]
 script = ExtResource("1_213gg")
+damageSoundPath = "res://Audio/impactGlass_heavy_000.ogg"
+destroyedSoundPath = "res://Audio/impact_glass_window_smash_break.ogg"
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_fbtdb")
-maxHealth = 20.0
+maxHealth = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -26,9 +26,3 @@ shape = SubResource("RectangleShape2D_7q1ts")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_kmncp")
-
-[node name="DamageSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_21ifk")
-
-[node name="DestroyedSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_tfckt")

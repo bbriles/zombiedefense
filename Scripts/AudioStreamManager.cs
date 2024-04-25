@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 public partial class AudioStreamManager : Node
@@ -32,51 +33,19 @@ public partial class AudioStreamManager : Node
 
     public void Play(string soundPath)
     {
-        queue.Append<string>(soundPath);
+        Debug.Print("Adding \"" + soundPath + "\" to audio queue");
+        queue.Enqueue(soundPath);
     }
 
     public override void _Process(double delta)
     {
         if (queue.Count() > 0 && available.Count() > 0)
         {
+            Debug.Print("Playing Audio");
             var player = available.Dequeue();
             player.Stream = (AudioStream)GD.Load(queue.Dequeue());
+            player.VolumeDb -= 5;
             player.Play();
         }
     }
 }
-
-/*extends Node
-
-var num_players = 8
-var bus = "master"
-
-var available = []  # The available players.
-var queue = []  # The queue of sounds to play.
-
-
-func _ready():
-    # Create the pool of AudioStreamPlayer nodes.
-    for i in num_players:
-        var p = AudioStreamPlayer.new()
-        add_child(p)
-        available.append(p)
-        p.finished.connect(_on_stream_finished.bind(p))
-        p.bus = bus
-
-
-func _on_stream_finished(stream):
-    # When finished playing a stream, make the player available again.
-    available.append(stream)
-
-
-func play(sound_path):
-    queue.append(sound_path)
-
-
-func _process(delta):
-	# Play a queued sound if any players are available.
-    if not queue.empty() and not available.empty():
-        available[0].stream = load(queue.pop_front())
-        available[0].play()
-        available.pop_front()*/

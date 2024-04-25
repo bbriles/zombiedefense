@@ -16,10 +16,11 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_h8se0")
 speed = 60.0
+damage = 20.0
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_yo7i3")
-maxHealth = 20.0
+maxHealth = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hnnli")

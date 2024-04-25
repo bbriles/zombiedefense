@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 public partial class Destructable : Node2D
 {
+	[Export] string damageSoundPath;
+	[Export] string destroyedSoundPath;
+
 	Health health;
 	AudioStreamPlayer damageSound;
 
@@ -17,15 +20,16 @@ public partial class Destructable : Node2D
     public void OnDestruction()
 	{
 		Debug.Print("Destructable Object Destroyed");
-		var destroyedSound = GetNode<AudioStreamPlayer>("DestroyedSound");
-		destroyedSound.Play();
-		destroyedSound.Finished += () => { QueueFree(); };
-		var collision = GetNode<CollisionShape2D>("CollisionShape2D");
-		collision.Disabled = true;
+
+		var audioStreamManager = GetNode<AudioStreamManager>("/root/AudioStreamManager");
+		audioStreamManager.Play(destroyedSoundPath);
+
+		QueueFree();
 	}
 
 	public void OnDamaged()
 	{
-		damageSound.Play();
+		var audioStreamManager = GetNode<AudioStreamManager>("/root/AudioStreamManager");
+		audioStreamManager.Play(damageSoundPath);
 	}
 }
