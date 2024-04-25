@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://5hps4xcfsnir"]
+[gd_scene load_steps=8 format=3 uid="uid://5hps4xcfsnir"]
 
 [ext_resource type="Script" path="res://Scripts/Destructable.cs" id="1_213gg"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="1_fbtdb"]
 [ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="2_qpftt"]
 [ext_resource type="AudioStream" uid="uid://kbjputhm8oun" path="res://Audio/impactGlass_heavy_000.ogg" id="4_21ifk"]
+[ext_resource type="AudioStream" uid="uid://bm43m3gssemgr" path="res://Audio/impact_glass_window_smash_break.ogg" id="5_tfckt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7q1ts"]
 size = Vector2(64, 18)
@@ -28,3 +29,6 @@ texture = SubResource("AtlasTexture_kmncp")
 
 [node name="DamageSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_21ifk")
+
+[node name="DestroyedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tfckt")

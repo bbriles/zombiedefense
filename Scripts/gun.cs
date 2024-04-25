@@ -12,10 +12,14 @@ public partial class Gun : Node2D
 	float fireRate;
 	float timeToFire = 0f;
 
+	AudioStreamPlayer shootSound;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		fireRate = 1 / bulletsPerSecond;
+
+		shootSound = GetParent().GetNode<AudioStreamPlayer>("GunShotSound");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +41,8 @@ public partial class Gun : Node2D
 			bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
 
 			GetTree().Root.AddChild(bullet);
+
+			shootSound.Play();
 
 			timeToFire = 0f;
 		}

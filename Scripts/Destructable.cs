@@ -16,8 +16,12 @@ public partial class Destructable : Node2D
     }
     public void OnDestruction()
 	{
-		Debug.Print("Door Destroyed");
-		QueueFree();
+		Debug.Print("Destructable Object Destroyed");
+		var destroyedSound = GetNode<AudioStreamPlayer>("DestroyedSound");
+		destroyedSound.Play();
+		destroyedSound.Finished += () => { QueueFree(); };
+		var collision = GetNode<CollisionShape2D>("CollisionShape2D");
+		collision.Disabled = true;
 	}
 
 	public void OnDamaged()

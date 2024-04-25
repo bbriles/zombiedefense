@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvs7fkt4nbu8v"]
+[gd_scene load_steps=8 format=3 uid="uid://dvs7fkt4nbu8v"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_g60dw"]
 [ext_resource type="Texture2D" uid="uid://b4bx5rvdkdxgr" path="res://Sprites/survivor1_gun.png" id="1_se0ue"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="2_xt3he"]
 [ext_resource type="Script" path="res://Scripts/Gun.cs" id="3_a03qw"]
 [ext_resource type="PackedScene" uid="uid://006dl8x2ouu6" path="res://Entities/bullet.tscn" id="4_xyhul"]
+[ext_resource type="AudioStream" uid="uid://brp0fbi60e8h" path="res://Audio/gun_shot_02.ogg" id="6_n0jr4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tn05y"]
 radius = 15.0
@@ -28,5 +29,9 @@ texture = ExtResource("1_se0ue")
 position = Vector2(38, 10)
 script = ExtResource("3_a03qw")
 bulletScene = ExtResource("4_xyhul")
+
+[node name="GunShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n0jr4")
+volume_db = -10.0
 
 [connection signal="tree_exited" from="." to="." method="OnDeath"]
