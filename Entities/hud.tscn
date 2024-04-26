@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4meg7n3mqux4"]
+
+[ext_resource type="Script" path="res://Scripts/Hud.cs" id="1_61326"]
+[ext_resource type="Texture2D" uid="uid://dvdso63kb7cjn" path="res://Sprites/UI/buttonLong_blue.png" id="2_5bt1i"]
+[ext_resource type="Texture2D" uid="uid://dc0rwfrgucmkw" path="res://Sprites/UI/red_button01.png" id="3_ox6xg"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("healthP1", "healthP2")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61326")
+healthP1 = NodePath("P1_Info/VBoxContainer/Health_P1")
+healthP2 = NodePath("P2_Info/VBoxContainer/Health_P2")
+
+[node name="P1_Info" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+offset_right = 240.0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="P1_Info"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P1_Info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="P1_Info/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+
+[node name="Player ID" type="Label" parent="P1_Info/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+offset_right = 62.0
+offset_bottom = 23.0
+text = "Player 1
+"
+
+[node name="Score" type="Label" parent="P1_Info/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0"
+
+[node name="Health_P1" type="TextureProgressBar" parent="P1_Info/VBoxContainer"]
+layout_mode = 2
+step = 0.0
+value = 100.0
+texture_under = ExtResource("2_5bt1i")
+texture_progress = ExtResource("3_ox6xg")
+tint_progress = Color(1, 0.282353, 0.258824, 0.886275)
+
+[node name="P2_Info" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -113.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="P2_Info"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P2_Info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="P2_Info/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+
+[node name="Player ID" type="Label" parent="P2_Info/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+offset_right = 62.0
+offset_bottom = 23.0
+text = "Player 2
+"
+
+[node name="Score" type="Label" parent="P2_Info/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0"
+
+[node name="Health_P2" type="TextureProgressBar" parent="P2_Info/VBoxContainer"]
+layout_mode = 2
+step = 0.0
+value = 100.0
+texture_under = ExtResource("2_5bt1i")
+texture_progress = ExtResource("3_ox6xg")
+tint_progress = Color(1, 0.282353, 0.258824, 0.886275)

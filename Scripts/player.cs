@@ -5,8 +5,8 @@ using System.Diagnostics;
 public partial class Player : CharacterBody2D
 {
 	Level level;
-	Health health;
-	[Export] int playerNumber = 1;
+	public Health Health;
+	[Export] public int PlayerNumber = 1;
 	[Export] public int Speed = 300;
 
 	Activatable activateTarget = null;
@@ -15,9 +15,9 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         level = GetTree().Root.GetNode<Level>("Level");
-		health = GetChild<Health>(0);
+		Health = GetChild<Health>(0);
 
-		health.HealthDepleted += OnDeath;
+		Health.HealthDepleted += OnDeath;
 
 		// Setup signal events
 		TreeExited += OnDeath;
@@ -26,7 +26,7 @@ public partial class Player : CharacterBody2D
     public void GetInput()
 	{
 		Vector2 inputDirection;
-		if (playerNumber == 1) 
+		if (PlayerNumber == 1) 
 		{
 		 	inputDirection = Input.GetVector("p1_left", "p1_right", "p1_up", "p1_down");
 		}
@@ -42,7 +42,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		// Check for activation
-		if ((playerNumber == 1 && Input.IsActionJustPressed("p1_activate")) || (playerNumber == 2 && Input.IsActionJustPressed("p2_activate")))
+		if ((PlayerNumber == 1 && Input.IsActionJustPressed("p1_activate")) || (PlayerNumber == 2 && Input.IsActionJustPressed("p2_activate")))
 		{
 			Activate();
 		}
@@ -57,7 +57,7 @@ public partial class Player : CharacterBody2D
 
 	public void OnDeath()
 	{
-		Debug.Print("Player " + playerNumber + " Has Died");
+		Debug.Print("Player " + PlayerNumber + " Has Died");
 		level.RemovePlayer(this);
 		QueueFree();
 	}

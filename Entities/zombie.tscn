@@ -20,7 +20,7 @@ damage = 20.0
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_yo7i3")
-maxHealth = 30.0
+MaxHealth = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hnnli")
