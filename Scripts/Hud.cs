@@ -22,8 +22,8 @@ public partial class Hud : Control
             var container =  (Container)GetNode("P2_Info");
             container.Visible = true;
 
-            player.Health.HealthUpdated += OnPlayer1HealthUpdate;
-            player1 = player;
+            player.Health.HealthUpdated += OnPlayer2HealthUpdate;
+            player2 = player;
         }
     }
 
@@ -35,6 +35,6 @@ public partial class Hud : Control
 
     void OnPlayer2HealthUpdate(float health)
     {
-        healthP2.Value = health * 100 / player1.Health.MaxHealth;
+        healthP2.Value = health * 100 / player2.Health.MaxHealth;
     }
 }

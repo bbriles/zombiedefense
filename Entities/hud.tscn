@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4meg7n3mqux4"]
 
 [ext_resource type="Script" path="res://Scripts/Hud.cs" id="1_61326"]
-[ext_resource type="Texture2D" uid="uid://dvdso63kb7cjn" path="res://Sprites/UI/buttonLong_blue.png" id="2_5bt1i"]
-[ext_resource type="Texture2D" uid="uid://dc0rwfrgucmkw" path="res://Sprites/UI/red_button01.png" id="3_ox6xg"]
+[ext_resource type="Texture2D" uid="uid://c18gkelr0cjqi" path="res://Sprites/UI/health_bottom.png" id="2_jgcxb"]
+[ext_resource type="Texture2D" uid="uid://bxpqqo3ctoihh" path="res://Sprites/UI/health_mid.png" id="3_jjvhi"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("healthP1", "healthP2")]
 layout_mode = 3
@@ -37,7 +37,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Control" type="Control" parent="P1_Info/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(240, 20)
 layout_mode = 2
 
 [node name="Player ID" type="Label" parent="P1_Info/VBoxContainer/HBoxContainer/Control"]
@@ -61,12 +61,10 @@ text = "0"
 layout_mode = 2
 step = 0.0
 value = 100.0
-texture_under = ExtResource("2_5bt1i")
-texture_progress = ExtResource("3_ox6xg")
-tint_progress = Color(1, 0.282353, 0.258824, 0.886275)
+texture_under = ExtResource("2_jgcxb")
+texture_progress = ExtResource("3_jjvhi")
 
 [node name="P2_Info" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -91,7 +89,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Control" type="Control" parent="P2_Info/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(240, 20)
 layout_mode = 2
 
 [node name="Player ID" type="Label" parent="P2_Info/VBoxContainer/HBoxContainer/Control"]
@@ -115,6 +113,5 @@ text = "0"
 layout_mode = 2
 step = 0.0
 value = 100.0
-texture_under = ExtResource("2_5bt1i")
-texture_progress = ExtResource("3_ox6xg")
-tint_progress = Color(1, 0.282353, 0.258824, 0.886275)
+texture_under = ExtResource("2_jgcxb")
+texture_progress = ExtResource("3_jjvhi")

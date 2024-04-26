@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc0rwfrgucmkw"
-path="res://.godot/imported/red_button01.png-dd7664f6fe01744eee07258dc7c1760d.ctex"
+uid="uid://ck4ct6rhomknr"
+path="res://.godot/imported/Zombie Defense - Game Over.png-8030640708ca26ceb38ac71b36a45bbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/red_button01.png"
-dest_files=["res://.godot/imported/red_button01.png-dd7664f6fe01744eee07258dc7c1760d.ctex"]
+source_file="res://Sprites/UI/Zombie Defense - Game Over.png"
+dest_files=["res://.godot/imported/Zombie Defense - Game Over.png-8030640708ca26ceb38ac71b36a45bbe.ctex"]
 
 [params]
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv2jm52vihqxw"]
+
+[ext_resource type="Texture2D" uid="uid://ck4ct6rhomknr" path="res://Sprites/UI/Zombie Defense - Game Over.png" id="1_w6u5q"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ZombieDefense-GameOver" type="Sprite2D" parent="."]
+position = Vector2(1024, 480)
+texture = ExtResource("1_w6u5q")

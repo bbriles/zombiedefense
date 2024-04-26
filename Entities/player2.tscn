@@ -33,6 +33,7 @@ position = Vector2(38, 10)
 script = ExtResource("4_2lvs1")
 playerNumber = 2
 bulletScene = ExtResource("5_w55vf")
+bulletsPerSecond = 2.0
 
 [node name="GunShotSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_rbc28")
@@ -43,3 +44,6 @@ volume_db = -10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(21, 0)
 shape = SubResource("RectangleShape2D_f2wno")
+
+[connection signal="body_entered" from="ActivateArea" to="." method="OnActivateBodyRangeEntered"]
+[connection signal="body_exited" from="ActivateArea" to="." method="OnActivateBodyRangeExit"]

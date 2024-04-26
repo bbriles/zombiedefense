@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb0wpovsaxrm0"]
+
+[ext_resource type="Script" path="res://Scripts/Destructable.cs" id="1_j0oy3"]
+[ext_resource type="Script" path="res://Scripts/Health.cs" id="2_xi58r"]
+[ext_resource type="Texture2D" uid="uid://colps6y7fork3" path="res://Sprites/tilesheet_complete.png" id="3_od75p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xebf5"]
+size = Vector2(64, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vvhg"]
+atlas = ExtResource("3_od75p")
+region = Rect2(768, 1216, 64, 64)
+
+[node name="Door" type="StaticBody2D" groups=["destructable"]]
+script = ExtResource("1_j0oy3")
+damageSoundPath = "res://Audio/impactPlank_medium_000.ogg"
+destroyedSoundPath = "res://Audio/wood-smash-1-170410.ogg"
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_xi58r")
+MaxHealth = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_xebf5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_4vvhg")

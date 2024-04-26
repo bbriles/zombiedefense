@@ -92,6 +92,10 @@ public partial class Zombie : CharacterBody2D
     {
         if(currentTarget != null) {
             Debug.Print("Zombie Attacking");
+            
+            var sprite = GetNode<AnimatedSprite2D>("Graphics");
+            sprite.Play("attack");
+
             currentTarget.GetNode<Health>("Health").Damage(damage);
         }
     }

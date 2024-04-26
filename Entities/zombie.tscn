@@ -1,12 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwbm375ml3qs7"]
+[gd_scene load_steps=8 format=3 uid="uid://bwbm375ml3qs7"]
 
 [ext_resource type="Script" path="res://Scripts/Zombie.cs" id="1_h8se0"]
 [ext_resource type="Texture2D" uid="uid://ct3ma32b4tts" path="res://Sprites/zombie1_hold.png" id="1_jnla8"]
 [ext_resource type="Script" path="res://Scripts/Health.cs" id="2_yo7i3"]
+[ext_resource type="Texture2D" uid="uid://blywf8au8uejn" path="res://Sprites/zombie1_stand.png" id="3_scs2l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hnnli"]
 radius = 12.0
 height = 44.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sruua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jnla8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_scs2l")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_scs2l")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51gy0"]
 size = Vector2(20.5, 43)
@@ -20,14 +43,15 @@ damage = 20.0
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_yo7i3")
-MaxHealth = 30.0
+MaxHealth = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hnnli")
 
-[node name="Graphics" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
-texture = ExtResource("1_jnla8")
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sruua")
+animation = &"attack"
+autoplay = "default"
 
 [node name="AttackRange" type="Area2D" parent="."]
 

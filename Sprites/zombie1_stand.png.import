@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxi32o73np1li"
-path="res://.godot/imported/Zombie Defense Logo.png-984e3b9e6c450d9b147d65a29a8976e7.ctex"
+uid="uid://blywf8au8uejn"
+path="res://.godot/imported/zombie1_stand.png-5a29a97656ef2e569fa6afb3129c969e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Zombie Defense Logo.png"
-dest_files=["res://.godot/imported/Zombie Defense Logo.png-984e3b9e6c450d9b147d65a29a8976e7.ctex"]
+source_file="res://Sprites/zombie1_stand.png"
+dest_files=["res://.godot/imported/zombie1_stand.png-5a29a97656ef2e569fa6afb3129c969e.ctex"]
 
 [params]
 
